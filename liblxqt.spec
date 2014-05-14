@@ -2,56 +2,62 @@
 %define libname %mklibname lxqt %{major}
 %define devname %mklibname lxqt -d
 
-Name: liblxqt
-Version: 0.7.0
-Release: 1
-Source0: http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Summary: Libraries for the LXQt desktop
-URL: http://lxqt.org/
-License: GPL
-Group: System/Libraries
-BuildRequires: pkgconfig(qtxdg)
-BuildRequires: cmake
-BuildRequires: qt4-devel
-Requires: %{libname} = %{EVRD}
+Summary:	Libraries for the LXQt desktop
+Name:		liblxqt
+Version:	0.7.0
+Release:	2
+License:	LGPLv2.1+
+Group:		System/Libraries
+Url:		http://lxqt.org/
+Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:	cmake
+BuildRequires:	qt4-devel
+BuildRequires:	pkgconfig(qtxdg)
 
 %description
-Libraries for the LXQt desktop
+Libraries for the LXQt desktop.
+
+%files
+%{_datadir}/lxqt/
+
+#----------------------------------------------------------------------------
 
 %package -n %{libname}
-Summary: Libraries for the LXQt desktop
-Group: System/Libraries
-Requires: %{name} = %{EVRD}
+Summary:	Libraries for the LXQt desktop
+Group:		System/Libraries
+Requires:	%{name}
 
 %description -n %{libname}
 Libraries for the LXQt desktop
 
+%files -n %{libname}
+%{_libdir}/liblxqt.so.%{major}*
+
+#----------------------------------------------------------------------------
+
 %package -n %{devname}
-Summary: Development files for %{name}
-Group: Development/C
-Requires: %{libname} = %{EVRD}
+Summary:	Development files for %{name}
+Group:		Development/C
+Requires:	%{libname} = %{EVRD}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
 
+%files -n %{devname}
+%{_includedir}/*
+%{_libdir}/liblxqt.so
+%{_libdir}/pkgconfig/*
+%{_datadir}/cmake/lxqt
+
+#----------------------------------------------------------------------------
+
 %prep
 %setup -q -c %{name}-%{version}
-%cmake
 
 %build
-%make -C build
+%cmake
+%make
 
 %install
 %makeinstall_std -C build
 
-%files
-%{_datadir}/lxqt
-
-%files -n %{libname}
-%{_libdir}/*.so.%{major}*
-
-%files -n %{devname}
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*
-%{_datadir}/cmake/lxqt
