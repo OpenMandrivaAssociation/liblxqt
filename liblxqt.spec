@@ -5,7 +5,7 @@
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
 Version:	0.7.0
-Release:	3
+Release:	4
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
