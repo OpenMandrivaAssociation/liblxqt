@@ -21,6 +21,8 @@ Url:		http://lxqt.org/
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
 BuildRequires:	cmake(qt5xdg)
+BuildRequires:	cmake(Qt5X11Extras)
+BuildRequires:	cmake(Qt5LinguistTools)
 
 %description
 Libraries for the LXQt desktop.
