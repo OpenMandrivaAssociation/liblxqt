@@ -3,7 +3,7 @@
 %define devname %mklibname lxqt-qt5 -d
 %define qt4libname %mklibname lxqt %{major}
 %define qt4devname %mklibname lxqt -d
-%define scm 20140730
+%define scm %nil
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
@@ -64,7 +64,11 @@ Development files (Headers etc.) for %{name}.
 #----------------------------------------------------------------------------
 
 %prep
+%if "%scm" != ""
 %setup -q -n %{name}
+%else
+%setup -q
+%endif
 
 %build
 %cmake -DUSE_QT5=ON
