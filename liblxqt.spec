@@ -23,6 +23,7 @@ BuildRequires:	qt5-devel
 BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5LinguistTools)
+BuildRequires:	cmake(KF5WindowSystem)
 
 %description
 Libraries for the LXQt desktop.
