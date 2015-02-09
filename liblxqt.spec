@@ -1,8 +1,6 @@
 %define major 0
-%define libname %mklibname lxqt-qt5 %{major}
-%define devname %mklibname lxqt-qt5 -d
-%define qt4libname %mklibname lxqt %{major}
-%define qt4devname %mklibname lxqt -d
+%define libname %mklibname lxqt %{major}
+%define devname %mklibname lxqt -d
 %define scm %nil
 
 Summary:	Libraries for the LXQt desktop
@@ -29,7 +27,10 @@ BuildRequires:	cmake(KF5WindowSystem)
 Libraries for the LXQt desktop.
 
 %files
-%{_datadir}/lxqt-qt5/
+%dir %{_datadir}/lxqt
+%dir %{_datadir}/lxqt/translations
+%dir %{_datadir}/lxqt/translations/liblxqt
+%{_datadir}/lxqt/translations/liblxqt/*.qm
 
 #----------------------------------------------------------------------------
 
@@ -37,13 +38,13 @@ Libraries for the LXQt desktop.
 Summary:	Libraries for the LXQt desktop
 Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
-%rename %{qt4libname}
+%rename %{mklibname lxqt-qt5 0}
 
 %description -n %{libname}
 Libraries for the LXQt desktop
 
 %files -n %{libname}
-%{_libdir}/liblxqt-qt5.so.%{major}*
+%{_libdir}/liblxqt.so.%{major}*
 
 #----------------------------------------------------------------------------
 
@@ -51,17 +52,19 @@ Libraries for the LXQt desktop
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
-%rename %{qt4devname}
+%rename %{mklibname lxqt-qt5 -d}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
 
 %files -n %{devname}
+%dir %{_datadir}/cmake/lxqt
+%dir %{_datadir}/cmake/lxqt/modules
 %{_includedir}/*
-%{_libdir}/liblxqt-qt5.so
+%{_libdir}/liblxqt.so
 %{_libdir}/pkgconfig/*
-%{_datadir}/cmake/lxqt-qt5
-
+%{_datadir}/cmake/lxqt/*.cmake
+%{_datadir}/cmake/lxqt/modules/*
 #----------------------------------------------------------------------------
 
 %prep
