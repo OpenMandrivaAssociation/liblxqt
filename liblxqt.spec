@@ -38,7 +38,8 @@ Libraries for the LXQt desktop.
 Summary:	Libraries for the LXQt desktop
 Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
-%rename %{mklibname lxqt-qt5 0}
+Conflicts:	%{mklibname lxqt-qt5 0} < 0.9.0
+%rename		%{_lib}lxqt-qt5_0
 
 %description -n %{libname}
 Libraries for the LXQt desktop
@@ -52,7 +53,7 @@ Libraries for the LXQt desktop
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
-%rename %{mklibname lxqt-qt5 -d}
+%rename		%{_lib}lxqt-qt5-devel
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
