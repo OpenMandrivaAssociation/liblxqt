@@ -17,6 +17,7 @@ License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
 BuildRequires:	cmake
+BuildRequires:	qmake5
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5X11Extras)
