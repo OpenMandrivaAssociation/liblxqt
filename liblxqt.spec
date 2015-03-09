@@ -10,7 +10,7 @@ Version:	0.9.0
 Release:	0.%scm.1	
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	2
+Release:	3
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
 %endif
 License:	LGPLv2.1+
@@ -78,7 +78,7 @@ Development files (Headers etc.) for %{name}.
 %endif
 
 %build
-%cmake
+%cmake -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg"
 %make
 
 %install
