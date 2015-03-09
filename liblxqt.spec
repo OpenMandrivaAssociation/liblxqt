@@ -10,16 +10,17 @@ Version:	0.9.0
 Release:	0.%scm.1	
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	1
+Release:	2
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
 %endif
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
 BuildRequires:	cmake
-BuildRequires:	qt5-devel
-BuildRequires:	cmake(qt5xdg)
+BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5X11Extras)
+BuildRequires:	cmake(Qt5Xdg)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(KF5WindowSystem)
 
@@ -76,7 +77,7 @@ Development files (Headers etc.) for %{name}.
 %endif
 
 %build
-%cmake -DUSE_QT5=ON
+%cmake
 %make
 
 %install
