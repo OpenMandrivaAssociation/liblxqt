@@ -5,13 +5,13 @@
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	0.9.0
+Version:	0.10.0
 %if "%scm" != ""
 Release:	0.%scm.1	
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	5
-Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
+Release:	1
+Source0:	http://downloads.lxqt.org/lxqt/%{version}/%{name}-%{version}.tar.xz
 %endif
 License:	LGPLv2.1+
 Group:		System/Libraries
@@ -21,8 +21,8 @@ BuildRequires:	qmake5
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5X11Extras)
-BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(Qt5LinguistTools)
+BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(KF5WindowSystem)
 
 %description
