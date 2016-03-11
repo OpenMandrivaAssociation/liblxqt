@@ -10,7 +10,7 @@ Version:	0.10.0
 Release:	1.%scm.1	
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	5
+Release:	6
 Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
 %endif
 License:	LGPLv2.1+
