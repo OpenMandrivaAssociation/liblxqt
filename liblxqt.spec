@@ -7,10 +7,10 @@ Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
 Version:	0.10.0
 %if "%scm" != ""
-Release:	1.%scm.1	
+Release:	1.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	6
+Release:	7
 Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
 %endif
 License:	LGPLv2.1+
@@ -18,6 +18,7 @@ Group:		System/Libraries
 Url:		http://lxqt.org/
 BuildRequires:	cmake
 BuildRequires:	qmake5
+BuildRequires:	ninja
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5X11Extras)
@@ -44,7 +45,7 @@ Conflicts:	%{mklibname lxqt-qt5 0} < 0.9.0
 %rename		%{_lib}lxqt-qt5_0
 
 %description -n %{libname}
-Libraries for the LXQt desktop
+Libraries for the LXQt desktop.
 
 %files -n %{libname}
 %{_libdir}/liblxqt.so.%{major}*
@@ -77,10 +78,20 @@ Development files (Headers etc.) for %{name}.
 %setup -q
 %endif
 
+%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -G Ninja
+
 %build
-%cmake -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg"
-%make
+# Need to be in a UTF-8 locale so grep (used by the desktop file
+# translation generator) doesn't scream about translations containing
+# "binary" (non-ascii) characters
+export LANG=en_US.utf-8
+export LC_ALL=en_US.utf-8
+%ninja -C build
 
 %install
-%makeinstall_std -C build
-
+# Need to be in a UTF-8 locale so grep (used by the desktop file
+# translation generator) doesn't scream about translations containing
+# "binary" (non-ascii) characters
+export LANG=en_US.utf-8
+export LC_ALL=en_US.utf-8
+%ninja_install -C build
