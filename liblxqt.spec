@@ -19,6 +19,7 @@ Url:		http://lxqt.org/
 BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	ninja
+BuildRequires:	git-core
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
