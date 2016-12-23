@@ -10,7 +10,7 @@ Version:	0.11.0
 Release:	1.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	5
+Release:	6
 Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
 %endif
 License:	LGPLv2.1+
@@ -27,7 +27,7 @@ BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(KF5WindowSystem)
-BuildRequires:	git-core
+BuildRequires:	lxqt-l10n
 
 %description
 Libraries for the LXQt desktop.
@@ -60,7 +60,7 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 %rename		%{_lib}lxqt-qt5-devel
-Requires:	git-core
+Requires:	lxqt-l10n
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
