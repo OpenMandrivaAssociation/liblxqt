@@ -10,7 +10,7 @@ Version:	0.11.0
 Release:	1.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	8
+Release:	9
 Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
 %endif
 License:	LGPLv2.1+
@@ -27,8 +27,6 @@ BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(KF5WindowSystem)
-BuildRequires:	lxqt-l10n
-BuildRequires:	git-core
 
 %description
 Libraries for the LXQt desktop.
@@ -61,7 +59,6 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 %rename		%{_lib}lxqt-qt5-devel
-Requires:	git-core
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
@@ -85,7 +82,7 @@ Development files (Headers etc.) for %{name}.
 %setup -q
 %endif
 
-%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -G Ninja
+%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
 
 %build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
