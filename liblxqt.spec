@@ -31,12 +31,6 @@ BuildRequires:	cmake(KF5WindowSystem)
 %description
 Libraries for the LXQt desktop.
 
-%files
-%dir %{_datadir}/lxqt
-%dir %{_datadir}/lxqt/translations
-%dir %{_datadir}/lxqt/translations/liblxqt
-%{_datadir}/lxqt/translations/liblxqt/*.qm
-
 #----------------------------------------------------------------------------
 
 %package -n %{libname}
@@ -59,6 +53,7 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 %rename		%{_lib}lxqt-qt5-devel
+Obsoletes:	%{name} < 0.11.0-9
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
