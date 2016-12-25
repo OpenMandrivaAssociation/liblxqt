@@ -10,7 +10,7 @@ Version:	0.11.0
 Release:	1.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	10
+Release:	11
 Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
 %endif
 License:	LGPLv2.1+
@@ -38,6 +38,7 @@ Summary:	Libraries for the LXQt desktop
 Group:		System/Libraries
 Conflicts:	%{mklibname lxqt-qt5 0} < 0.9.0
 %rename		%{_lib}lxqt-qt5_0
+%rename		%{name}
 
 %description -n %{libname}
 Libraries for the LXQt desktop.
@@ -52,7 +53,6 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 %rename		%{_lib}lxqt-qt5-devel
-Obsoletes:	%{name} < 0.11.0-10
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
