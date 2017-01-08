@@ -20,6 +20,7 @@ BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(xscrnsaver)
+BuildRequires:	cmake(lxqt-build-tools)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5X11Extras)
