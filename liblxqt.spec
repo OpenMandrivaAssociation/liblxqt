@@ -5,13 +5,13 @@
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	0.11.0
+Version:	0.11.1
 %if "%scm" != ""
 Release:	1.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
 Release:	11
-Source0:	https://github.com/lxde/%{name}/archive/%{version}.tar.gz
+Source0:	https://github.com/lxde/%{name}/archive/%{name}-%{version}.tar.xz
 %endif
 License:	LGPLv2.1+
 Group:		System/Libraries
@@ -19,7 +19,6 @@ Url:		http://lxqt.org/
 BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	ninja
-BuildRequires:	git-core
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
@@ -52,6 +51,7 @@ Libraries for the LXQt desktop.
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
+Requires:	cmake(lxqt-build-tools)
 %rename		%{_lib}lxqt-qt5-devel
 
 %description -n %{devname}
