@@ -60,14 +60,10 @@ Development files (Headers etc.) for %{name}.
 
 %files -n %{devname}
 %dir %{_datadir}/cmake/lxqt
-%dir %{_datadir}/cmake/lxqt/modules
-%dir %{_datadir}/cmake/lxqt/find-modules
 %{_includedir}/*
 %{_libdir}/liblxqt.so
 %{_libdir}/pkgconfig/*
 %{_datadir}/cmake/lxqt/*.cmake
-%{_datadir}/cmake/lxqt/modules/*
-%{_datadir}/cmake/lxqt/find-modules/FindXdgUserDirs.cmake
 #----------------------------------------------------------------------------
 
 %prep
