@@ -73,7 +73,7 @@ Development files (Headers etc.) for %{name}.
 %setup -q
 %endif
 
-%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg/qt5" -DPULL_TRANSLATIONS=NO -G Ninja
+%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
 
 %build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
