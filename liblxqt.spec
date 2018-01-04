@@ -10,7 +10,7 @@ Version:	0.12.0
 Release:	0.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	1
+Release:	2
 Source0:	https://github.com/lxde/liblxqt/archive/%{version}.tar.gz
 %endif
 License:	LGPLv2.1+
@@ -73,7 +73,7 @@ Development files (Headers etc.) for %{name}.
 %setup -q
 %endif
 
-%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
+%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg/qt5" -DPULL_TRANSLATIONS=NO -G Ninja
 
 %build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
