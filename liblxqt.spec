@@ -5,12 +5,12 @@
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	0.12.0
+Version:	0.13.0
 %if "%scm" != ""
 Release:	0.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	2
+Release:	1
 Source0:	https://github.com/lxde/liblxqt/archive/%{version}.tar.gz
 %endif
 License:	LGPLv2.1+
@@ -27,9 +27,15 @@ BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(KF5WindowSystem)
+Requires:	%{libname} = %{EVRD}
 
 %description
 Libraries for the LXQt desktop.
+
+%files
+%{_bindir}/lxqt-backlight_backend
+%{_datadir}/lxqt
+%{_datadir}/polkit-1/actions/org.lxqt.backlight.pkexec.policy
 
 #----------------------------------------------------------------------------
 
@@ -37,8 +43,8 @@ Libraries for the LXQt desktop.
 Summary:	Libraries for the LXQt desktop
 Group:		System/Libraries
 Conflicts:	%{mklibname lxqt-qt5 0} < 0.9.0
+Requires:	%{name} = %{EVRD}
 %rename		%{_lib}lxqt-qt5_0
-%rename		%{name}
 
 %description -n %{libname}
 Libraries for the LXQt desktop.
