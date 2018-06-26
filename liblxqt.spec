@@ -27,6 +27,7 @@ BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(qt5xdg)
 BuildRequires:	cmake(KF5WindowSystem)
+BuildRequires:	cmake(PolkitQt5-1)
 Requires:	%{libname} = %{EVRD}
 
 %description
