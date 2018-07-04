@@ -1,0 +1,12 @@
+diff -up liblxqt-0.13.0/cmake/lxqt-config.cmake.in.omv~ liblxqt-0.13.0/cmake/lxqt-config.cmake.in
+--- liblxqt-0.13.0/cmake/lxqt-config.cmake.in.omv~	2018-07-04 20:01:33.834350762 +0200
++++ liblxqt-0.13.0/cmake/lxqt-config.cmake.in	2018-07-04 20:01:40.982350243 +0200
+@@ -12,7 +12,7 @@ find_dependency(Qt5Widgets @QT_MINIMUM_V
+ find_dependency(Qt5DBus @QT_MINIMUM_VERSION@)
+ find_dependency(Qt5X11Extras @QT_MINIMUM_VERSION@)
+ find_dependency(Qt5LinguistTools @QT_MINIMUM_VERSION@)
+-find_dependency(Qt5Xdg @QTXDG_MINIMUM_VERSION@)
++find_dependency(qt5xdg @QTXDG_MINIMUM_VERSION@)
+ find_dependency(KF5WindowSystem)
+ find_dependency(lxqt-build-tools @LXQTBT_MINIMUM_VERSION@)
+ include(LXQtConfigVars)

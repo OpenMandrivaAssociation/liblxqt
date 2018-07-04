@@ -13,6 +13,7 @@ Source0:	%{name}-%{scm}.tar.xz
 Release:	1
 Source0:	https://github.com/lxde/liblxqt/archive/%{version}.tar.gz
 %endif
+Patch0:		liblxqt-0.13.0-find-qtxdg.patch
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
@@ -75,9 +76,9 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %if "%scm" != ""
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 %else
-%setup -q
+%autosetup -p1
 %endif
 
 %cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
