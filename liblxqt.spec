@@ -5,12 +5,12 @@
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	0.13.0
+Version:	0.14.0
 %if "%scm" != ""
-Release:	0.%scm.1
+Release:	1.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	2
+Release:	1
 Source0:	https://github.com/lxde/liblxqt/archive/%{version}.tar.gz
 %endif
 Patch0:		liblxqt-0.13.0-find-qtxdg.patch
