@@ -10,7 +10,7 @@ Version:	0.14.1
 Release:	1.%scm.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	2
+Release:	3
 Source0:	https://github.com/lxde/liblxqt/archive/%{version}.tar.gz
 %endif
 Patch0:		liblxqt-0.13.0-find-qtxdg.patch
@@ -63,6 +63,7 @@ Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 Requires:	cmake(lxqt-build-tools)
+Requires:	pkgconfig(glib-2.0)
 %rename		%{_lib}lxqt-qt5-devel
 
 %description -n %{devname}
