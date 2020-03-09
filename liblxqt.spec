@@ -21,6 +21,7 @@ BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(xscrnsaver)
+BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	cmake(lxqt-build-tools)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5DBus)
