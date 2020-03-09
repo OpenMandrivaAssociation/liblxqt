@@ -17,6 +17,7 @@ Patch0:		liblxqt-0.13.0-find-qtxdg.patch
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
+Patch1:		liblxqt-0.14.1-fix-build.patch
 BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	ninja

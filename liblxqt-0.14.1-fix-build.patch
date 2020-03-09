@@ -1,0 +1,11 @@
+diff -Naur liblxqt-0.14.1/lxqtpowermanager.cpp liblxqt-0.14.1.tpg/lxqtpowermanager.cpp
+--- liblxqt-0.14.1/lxqtpowermanager.cpp	2019-02-24 00:13:58.000000000 +0000
++++ liblxqt-0.14.1.tpg/lxqtpowermanager.cpp	2020-03-09 14:20:06.492242484 +0000
+@@ -32,6 +32,7 @@
+ #include <QApplication>
+ #include <QDesktopWidget>
+ #include <QtDebug>
++#include <QFile>
+ #include "lxqttranslator.h"
+ #include "lxqtglobals.h"
+ #include "lxqtsettings.h"
