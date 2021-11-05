@@ -1,13 +1,13 @@
-%define major 0
+%define major 1
 %define libname %mklibname lxqt %{major}
 %define devname %mklibname lxqt -d
 %define scm %nil
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	0.17.0
+Version:	1.0.0
 %if "%scm" != ""
-Release:	1
+Release:	0.%{scm}.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
 Release:	1
@@ -47,6 +47,7 @@ Summary:	Libraries for the LXQt desktop
 Group:		System/Libraries
 Conflicts:	%{mklibname lxqt-qt5 0} < 0.9.0
 Requires:	%{name} = %{EVRD}
+Obsoletes:	%{mklibname lxqt 0} < %{EVRD}
 %rename		%{_lib}lxqt-qt5_0
 
 %description -n %{libname}
