@@ -5,9 +5,9 @@
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	1.0.0
+Version:	1.1.0
 %if "%scm" != ""
-Release:	0.%{scm}.1
+Release:	1.%{scm}.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
 Release:	1
