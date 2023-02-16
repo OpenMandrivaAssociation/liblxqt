@@ -10,7 +10,7 @@ Version:	1.2.0
 Release:	1.%{scm}.1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	1
+Release:	2
 Source0:	https://github.com/lxqt/liblxqt/releases/download/%{version}/liblxqt-%{version}.tar.xz
 %endif
 #Patch0:		liblxqt-0.13.0-find-qtxdg.patch
