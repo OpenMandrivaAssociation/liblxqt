@@ -1,11 +1,12 @@
-%define major 1
-%define libname %mklibname lxqt %{major}
+%define major 2
+%define libname %mklibname lxqt
+%define oldlibname %mklibname lxqt 1
 %define devname %mklibname lxqt -d
 %define scm %nil
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	1.4.0
+Version:	2.0.0
 %if "%scm" != ""
 Release:	0.%{scm}1
 Source0:	%{name}-%{scm}.tar.xz
@@ -18,18 +19,16 @@ License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
 BuildRequires:	cmake
-BuildRequires:	qmake5
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	cmake(lxqt-build-tools)
-BuildRequires:	cmake(Qt5Widgets)
-BuildRequires:	cmake(Qt5DBus)
-BuildRequires:	cmake(Qt5X11Extras)
-BuildRequires:	cmake(Qt5LinguistTools)
-BuildRequires:	cmake(qt5xdg)
-BuildRequires:	cmake(KF5WindowSystem)
-BuildRequires:	cmake(PolkitQt5-1)
+BuildRequires:	cmake(lxqt2-build-tools)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6DBus)
+BuildRequires:	cmake(Qt6LinguistTools)
+BuildRequires:	cmake(qt6xdg)
+BuildRequires:	cmake(KF6WindowSystem)
+BuildRequires:	cmake(PolkitQt6-1)
 Requires:	%{libname} = %{EVRD}
 
 %description
@@ -45,10 +44,8 @@ Libraries for the LXQt desktop.
 %package -n %{libname}
 Summary:	Libraries for the LXQt desktop
 Group:		System/Libraries
-Conflicts:	%{mklibname lxqt-qt5 0} < 0.9.0
 Requires:	%{name} = %{EVRD}
-Obsoletes:	%{mklibname lxqt 0} < %{EVRD}
-%rename		%{_lib}lxqt-qt5_0
+%rename %{oldlibname}
 
 %description -n %{libname}
 Libraries for the LXQt desktop.
@@ -62,9 +59,8 @@ Libraries for the LXQt desktop.
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
-Requires:	cmake(lxqt-build-tools)
+Requires:	cmake(lxqt2-build-tools)
 Requires:	pkgconfig(glib-2.0)
-%rename		%{_lib}lxqt-qt5-devel
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
@@ -84,7 +80,7 @@ Development files (Headers etc.) for %{name}.
 %autosetup -p1
 %endif
 
-%cmake_qt5 -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
+%cmake -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
 
 %build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
