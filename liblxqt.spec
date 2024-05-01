@@ -11,10 +11,10 @@ Version:	2.0.0
 Release:	0.%{scm}1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	1
+Release:	2
 Source0:	https://github.com/lxqt/liblxqt/releases/download/%{version}/liblxqt-%{version}.tar.xz
 %endif
-#Patch0:		liblxqt-0.13.0-find-qtxdg.patch
+Patch0:		liblxqt-2.0.0-config.patch
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
