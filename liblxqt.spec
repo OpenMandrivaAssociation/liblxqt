@@ -11,7 +11,7 @@ Version:	2.0.0
 Release:	0.%{scm}1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	2
+Release:	3
 Source0:	https://github.com/lxqt/liblxqt/releases/download/%{version}/liblxqt-%{version}.tar.xz
 %endif
 Patch0:		liblxqt-2.0.0-config.patch
@@ -97,3 +97,6 @@ export LC_ALL=en_US.utf-8
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 %ninja_install -C build
+
+# We get configs from distro-release
+rm %{buildroot}%{_datadir}/lxqt/power.conf
