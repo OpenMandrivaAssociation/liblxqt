@@ -17,7 +17,7 @@ Source0:	https://github.com/lxqt/liblxqt/releases/download/%{version}/liblxqt-%{
 Patch0:		liblxqt-2.0.0-config.patch
 License:	LGPLv2.1+
 Group:		System/Libraries
-Url:		http://lxqt.org/
+Url:		https://lxqt.org/
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(xscrnsaver)
