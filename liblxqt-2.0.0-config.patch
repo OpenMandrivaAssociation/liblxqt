@@ -1,25 +1,25 @@
-diff -up liblxqt-2.0.0/lxqtsettings.cpp.omv~ liblxqt-2.0.0/lxqtsettings.cpp
---- liblxqt-2.0.0/lxqtsettings.cpp.omv~	2024-05-01 23:14:43.091496385 +0200
-+++ liblxqt-2.0.0/lxqtsettings.cpp	2024-05-01 23:16:54.472735040 +0200
+diff -up liblxqt-2.1.0/lxqtsettings.cpp.1~ liblxqt-2.1.0/lxqtsettings.cpp
+--- liblxqt-2.1.0/lxqtsettings.cpp.1~	2024-11-05 06:13:40.000000000 +0100
++++ liblxqt-2.1.0/lxqtsettings.cpp	2024-11-05 16:02:42.936116028 +0100
 @@ -559,7 +559,7 @@ QString LXQtTheme::desktopBackground(int
  const LXQtTheme &LXQtTheme::currentTheme()
  {
      static LXQtTheme theme;
--    QString name = Settings::globalSettings()->value(QL1S("theme")).toString();
-+    QString name = Settings::globalSettings()->value(QL1S("theme"), QL1S("Valendas")).toString();
+-    QString name = Settings::globalSettings()->value(QL1SV("theme")).toString();
++    QString name = Settings::globalSettings()->value(QL1SV("theme"), QL1S("Valendas")).toString();
      if (theme.name() != name)
      {
          theme = LXQtTheme(name);
 @@ -662,8 +662,8 @@ GlobalSettings::GlobalSettings():
  {
-     if (value(QL1S("icon_theme")).toString().isEmpty())
+     if (value(QL1SV("icon_theme")).toString().isEmpty())
      {
 -        qWarning() << QString::fromLatin1("Icon Theme not set. Fallbacking to Oxygen, if installed");
--        const QString fallback(QLatin1String("oxygen"));
+-        const QString fallback(QL1SV("oxygen"));
 +        qWarning() << QString::fromLatin1("Icon Theme not set. Fallbacking to Breeze, if installed");
-+        const QString fallback(QLatin1String("breeze"));
++        const QString fallback(QL1SV("breeze"));
  
-         const QDir dir(QLatin1String(LXQT_DATA_DIR) + QLatin1String("/icons"));
+         const QDir dir(QStringLiteral(LXQT_DATA_DIR) + QStringLiteral("/icons"));
          if (dir.exists(fallback))
 @@ -673,7 +673,7 @@ GlobalSettings::GlobalSettings():
          }
@@ -34,15 +34,15 @@ diff -up liblxqt-2.0.0/lxqtsettings.cpp.omv~ liblxqt-2.0.0/lxqtsettings.cpp
      sync();
  
  
--    QString it = value(QL1S("icon_theme")).toString();
-+    QString it = value(QL1S("icon_theme"), QL1S("breeze")).toString();
+-    QString it = value(QL1SV("icon_theme")).toString();
++    QString it = value(QL1SV("icon_theme"), QL1S("breeze")).toString();
      if (d->mIconTheme != it)
      {
          Q_EMIT iconThemeChanged();
      }
  
--    QString rt = value(QL1S("theme")).toString();
-+    QString rt = value(QL1S("theme"), QL1S("Valendas")).toString();
-     qlonglong themeUpdated = value(QL1S("__theme_updated__")).toLongLong();
+-    QString rt = value(QL1SV("theme")).toString();
++    QString rt = value(QL1SV("theme"), QL1S("Valendas")).toString();
+     qlonglong themeUpdated = value(QL1SV("__theme_updated__")).toLongLong();
      if ((d->mLXQtTheme != rt) || (d->mThemeUpdated != themeUpdated))
      {
