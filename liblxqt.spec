@@ -80,9 +80,8 @@ Development files (Headers etc.) for %{name}.
 %autosetup -p1
 %endif
 
-%cmake -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
-
 %build
+%cmake -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
 # Need to be in a UTF-8 locale so grep (used by the desktop file
 # translation generator) doesn't scream about translations containing
 # "binary" (non-ascii) characters
