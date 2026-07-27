@@ -11,15 +11,16 @@ Version:	2.4.0
 Release:	0.%{scm}1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	1
+Release:	2
 Source0:	https://github.com/lxqt/liblxqt/releases/download/%{version}/liblxqt-%{version}.tar.xz
 %endif
 Patch0:		liblxqt-2.0.0-config.patch
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		https://lxqt.org/
-BuildRequires:	cmake
-BuildRequires:	ninja
+BuildSystem:	cmake
+BuildOption:	-DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg"
+BuildOption:	-DPULL_TRANSLATIONS=NO
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	cmake(lxqt2-build-tools)
@@ -71,31 +72,22 @@ Development files (Headers etc.) for %{name}.
 %{_libdir}/liblxqt.so
 %{_libdir}/pkgconfig/*
 %{_datadir}/cmake/lxqt/*.cmake
+
 #----------------------------------------------------------------------------
 
-%prep
 %if "%scm" != ""
+%prep
 %autosetup -p1 -n %{name}
-%else
-%autosetup -p1
 %endif
 
-%build
-%cmake -DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg" -DPULL_TRANSLATIONS=NO -G Ninja
-# Need to be in a UTF-8 locale so grep (used by the desktop file
-# translation generator) doesn't scream about translations containing
-# "binary" (non-ascii) characters
+%build -p
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
-%ninja_build
 
-%install
-# Need to be in a UTF-8 locale so grep (used by the desktop file
-# translation generator) doesn't scream about translations containing
-# "binary" (non-ascii) characters
+%install -p
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
-%ninja_install -C build
 
+%install -a
 # We get configs from distro-release
 rm %{buildroot}%{_datadir}/lxqt/power.conf
