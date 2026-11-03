@@ -6,12 +6,12 @@
 
 Summary:	Libraries for the LXQt desktop
 Name:		liblxqt
-Version:	2.4.0
+Version:	2.5.0
 %if "%scm" != ""
 Release:	0.%{scm}1
 Source0:	%{name}-%{scm}.tar.xz
 %else
-Release:	2
+Release:	1
 Source0:	https://github.com/lxqt/liblxqt/releases/download/%{version}/liblxqt-%{version}.tar.xz
 %endif
 Patch0:		liblxqt-2.0.0-config.patch
@@ -23,11 +23,11 @@ BuildOption:	-DLXQT_ETC_XDG_DIR="%{_sysconfdir}/xdg"
 BuildOption:	-DPULL_TRANSLATIONS=NO
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	cmake(lxqt2-build-tools)
+BuildRequires:	cmake(lxqt2-build-tools) >= 2.5.0
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	cmake(Qt6DBus)
 BuildRequires:	cmake(Qt6LinguistTools)
-BuildRequires:	cmake(qt6xdg)
+BuildRequires:	cmake(qt6xdg) >= 4.5.0
 BuildRequires:	cmake(KF6WindowSystem)
 BuildRequires:	cmake(PolkitQt6-1)
 Requires:	%{libname} = %{EVRD}

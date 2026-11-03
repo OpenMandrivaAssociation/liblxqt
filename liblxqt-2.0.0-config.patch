@@ -1,48 +1,47 @@
-diff -up liblxqt-2.1.0/lxqtsettings.cpp.1~ liblxqt-2.1.0/lxqtsettings.cpp
---- liblxqt-2.1.0/lxqtsettings.cpp.1~	2024-11-05 06:13:40.000000000 +0100
-+++ liblxqt-2.1.0/lxqtsettings.cpp	2024-11-05 16:02:42.936116028 +0100
-@@ -559,7 +559,7 @@ QString LXQtTheme::desktopBackground(int
+--- liblxqt-2.5.0/lxqtsettings.cpp	2026-11-03 19:41:06.335605068 +0100
++++ liblxqt-2.5.0/lxqtsettings.cpp	2026-11-03 19:41:06.335762470 +0100
+@@ -561,7 +561,7 @@
  const LXQtTheme &LXQtTheme::currentTheme()
  {
      static LXQtTheme theme;
--    QString name = Settings::globalSettings()->value(QL1SV("theme")).toString();
-+    QString name = Settings::globalSettings()->value(QL1SV("theme"), QL1S("Valendas")).toString();
+-    QString name = Settings::globalSettings()->value("theme"_L1).toString();
++    QString name = Settings::globalSettings()->value("theme"_L1, "Valendas"_L1).toString();
      if (theme.name() != name)
      {
          theme = LXQtTheme(name);
-@@ -662,8 +662,8 @@ GlobalSettings::GlobalSettings():
+@@ -664,8 +664,8 @@
  {
-     if (value(QL1SV("icon_theme")).toString().isEmpty())
+     if (value("icon_theme"_L1).toString().isEmpty())
      {
--        qWarning() << QString::fromLatin1("Icon Theme not set. Fallbacking to Oxygen, if installed");
--        const QString fallback(QL1SV("oxygen"));
-+        qWarning() << QString::fromLatin1("Icon Theme not set. Fallbacking to Breeze, if installed");
-+        const QString fallback(QL1SV("breeze"));
+-        qWarning() << "Icon Theme not set. Fallbacking to Oxygen, if installed"_L1;
+-        const QString fallback("oxygen"_L1);
++        qWarning() << "Icon Theme not set. Fallbacking to Breeze, if installed"_L1;
++        const QString fallback("breeze"_L1);
  
          const QDir dir(QStringLiteral(LXQT_DATA_DIR) + QStringLiteral("/icons"));
          if (dir.exists(fallback))
-@@ -673,7 +673,7 @@ GlobalSettings::GlobalSettings():
+@@ -675,7 +675,7 @@
          }
          else
          {
--            qWarning() << QString::fromLatin1("Fallback Icon Theme (Oxygen) not found");
-+            qWarning() << QString::fromLatin1("Fallback Icon Theme (Breeze) not found");
+-            qWarning() << "Fallback Icon Theme (Oxygen) not found"_L1;
++            qWarning() << "Fallback Icon Theme (Breeze) not found"_L1;
          }
      }
  
-@@ -695,13 +695,13 @@ void GlobalSettings::fileChanged()
+@@ -697,13 +697,13 @@
      sync();
  
  
--    QString it = value(QL1SV("icon_theme")).toString();
-+    QString it = value(QL1SV("icon_theme"), QL1S("breeze")).toString();
+-    QString it = value("icon_theme"_L1).toString();
++    QString it = value("icon_theme"_L1, "breeze"_L1).toString();
      if (d->mIconTheme != it)
      {
          Q_EMIT iconThemeChanged();
      }
  
--    QString rt = value(QL1SV("theme")).toString();
-+    QString rt = value(QL1SV("theme"), QL1S("Valendas")).toString();
-     qlonglong themeUpdated = value(QL1SV("__theme_updated__")).toLongLong();
+-    QString rt = value("theme"_L1).toString();
++    QString rt = value("theme"_L1, "Valendas"_L1).toString();
+     qlonglong themeUpdated = value("__theme_updated__"_L1).toLongLong();
      if ((d->mLXQtTheme != rt) || (d->mThemeUpdated != themeUpdated))
      {
